@@ -54,31 +54,7 @@ export default async function CoursePage({ params }: PageProps) {
 
       {/* Main Content */}
       <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
-        {/* Quick Info */}
-        <div className="mb-8 grid gap-4 md:grid-cols-2">
-          <Card className="border-primary/20">
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <Clock className="h-5 w-5 text-primary" />
-                مدة الحصة
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-2xl font-bold text-primary">{course.duration}</p>
-            </CardContent>
-          </Card>
-          <Card className="border-primary/20">
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <Target className="h-5 w-5 text-accent" />
-                عدد الأهداف
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-2xl font-bold text-accent">{course.objectives.length} أهداف</p>
-            </CardContent>
-          </Card>
-        </div>
+      
 
         {/* Objectives */}
         <Card className="mb-8 border-primary/20">
@@ -135,7 +111,7 @@ export default async function CoursePage({ params }: PageProps) {
           </CardHeader>
           <CardContent className="pt-6">
             <ul className="space-y-3">
-              {course.practicalActivities.map((activity, index) => (
+              {course.practicalActivities?.map((activity, index) => (
                 <li key={index} className="flex items-start gap-3">
                   <div className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-green-600 text-xs font-bold text-white">
                     {index + 1}
@@ -158,7 +134,7 @@ export default async function CoursePage({ params }: PageProps) {
           </CardHeader>
           <CardContent className="pt-6">
             <ul className="space-y-3">
-              {course.assessment.map((item, index) => (
+              {course.assessment?.map((item, index) => (
                 <li key={index} className="flex items-start gap-3 rounded-lg bg-purple-50 p-3">
                   <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-purple-600" />
                   <span className="text-slate-700">{item}</span>
@@ -179,7 +155,7 @@ export default async function CoursePage({ params }: PageProps) {
           </CardHeader>
           <CardContent className="pt-6">
             <ul className="space-y-2">
-              {course.resources.map((resource, index) => (
+              {course.resources?.map((resource, index) => (
                 <li key={index} className="flex items-start gap-3 text-slate-700">
                   <span className="flex-shrink-0 rounded-full bg-indigo-100 px-2.5 py-0.5 text-xs font-semibold text-indigo-700">
                     {index + 1}
