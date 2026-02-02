@@ -15,11 +15,14 @@ export default function Home() {
   const standardCourses = coursesData.filter(c => c.path === 'standard');
   const advancedCourses = coursesData.filter(c => c.path === 'advanced');
   const studentCourses = coursesData.filter(c => c.path === 'students');
+  const universityCourses = coursesData.filter(c => c.path === 'university');
 
   const getColor = (path: string) => {
     if (path === 'standard') return 'bg-blue-50 border-blue-200';
     if (path === 'advanced') return 'bg-pink-50 border-pink-200';
-    return 'bg-green-50 border-green-200';
+    if (path === 'students') return 'bg-green-50 border-green-200';
+    if (path === 'university') return 'bg-purple-50 border-purple-200';
+    return '';
   };
 
   const renderSection = (title: string, courses: any[]) => (
@@ -39,7 +42,7 @@ export default function Home() {
                   {course.title}
                 </CardTitle>
                 <CardDescription>
-                  {course.objectives[0]}
+                  {course.objectives?.[0]}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -65,7 +68,7 @@ export default function Home() {
             اتفاقية QIMA – ولاية مدنين
           </p>
           <p className="mt-3 text-sm text-slate-500">
-            إعداد وتأطير: <strong>مريم صبري</strong>
+            إعداد وتأطير: <strong>مريم الصابري</strong>
           </p>
         </div>
       </header>
@@ -74,6 +77,7 @@ export default function Home() {
         {renderSection('المسار الأساسي', standardCourses)}
         {renderSection('المسار المتقدّم', advancedCourses)}
         {renderSection('مسار التلامذة', studentCourses)}
+        {renderSection('المسار الجامعي', universityCourses)}
 
         <footer className="mt-16 text-center text-sm text-slate-500">
           برنامج مقدّم من AVER و CIDEAL بالتعاون مع AECID
